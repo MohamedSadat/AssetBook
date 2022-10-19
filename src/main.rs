@@ -1,4 +1,4 @@
-#[allow(dead_code,unused_variables,unused_imports)]
+#[allow(dead_code,unused_variables,unused_imports,unused_parens,non_snake_case)]
 use std::io;
 use std::{fs, io::stdin};
 
@@ -10,7 +10,9 @@ fn main() {
     println!("Welcom to asset manager!");
 
 AssetModule:: PrintOption();
+//read user option
 stdin().read_line(&mut sel).expect("didn't resceive");
+//parse it
 let useropption = sel.trim().parse::<i32>().unwrap();
 
 if(useropption==1)
@@ -27,15 +29,7 @@ else if useropption==3 {
 }
 }
 
-fn ProcessSelection(x:i32)->i32{
-    match x {
-      //  1=> RegisterNewAsset(), 
-        2=>println!("Reading"),
-        3=>println!("Find"),
-        _=>println!("else")
-    }
-    return x;
-}
+
 fn RegisterNewAsset()->AssetModule::Asset
 {
     println!("Enter  Asset Name");
