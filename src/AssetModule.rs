@@ -10,6 +10,7 @@ pub fn PrintOption(){
     println!("2- Read All Asset");
     println!("3- Find Asset");
     println!("4- Save changes");
+    println!("0- To exit");
 
 }
 

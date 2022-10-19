@@ -5,28 +5,37 @@ use std::{fs, io::stdin};
 mod AssetModule;
 fn main() {
     let mut lstasset :Vec<AssetModule::Asset>=Vec::new(); 
-    let mut useropption = 0;
+    let mut useropption = 10;
     let mut sel=String::new();
     println!("Welcom to asset manager!");
 
-AssetModule:: PrintOption();
-//read user option
-stdin().read_line(&mut sel).expect("didn't resceive");
-//parse it
-let useropption = sel.trim().parse::<i32>().unwrap();
 
-if(useropption==1)
+while useropption!=100
 {
-    lstasset.push(RegisterNewAsset());
-    println!("Asset saved");
     AssetModule:: PrintOption();
+    //read user option
+    let useropption = ReadSelection();
+    if(useropption==1)
+    {
+        lstasset.push(RegisterNewAsset());
+        println!("Asset saved");
+       // AssetModule:: PrintOption();
+    }
+    else if useropption==2 {
+        println!("Reading");
+        for i in &lstasset
+        {
+            println!("{}",i.Name);
+        }
+    }
+    else if useropption==3 {
+        println!("Find");
+    }
+    else{
+        break;
+    }
 }
-else if useropption==2 {
-    println!("Reading");
-}
-else if useropption==3 {
-    println!("Find");
-}
+
 }
 
 
@@ -40,5 +49,17 @@ fn RegisterNewAsset()->AssetModule::Asset
         Id:0,
     Saved:false
     }
+
+}
+fn ReadSelection()->i32
+{
+    let mut sel=String::new() ;
+    stdin().read_line(&mut sel).expect("didn't resceive");
+    //parse it
+    let useropption = sel.trim().parse::<i32>().unwrap();
+    return useropption;
+}
+fn ParseSelection()
+{
 
 }
