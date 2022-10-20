@@ -1,4 +1,9 @@
 #[allow(dead_code,unused_variables,unused_imports,unused_parens,non_snake_case)]
+use std::fs::File;
+use std::io::prelude::*;
+use std::path::Path;
+
+#[derive(Debug)]
 pub struct Asset{
     pub Id:i32,
     pub Name:String,
